@@ -14,6 +14,10 @@ export interface Post {
 }
 
 export function getAllPosts(): Post[] {
+  // Check if the directory exists
+  if (!fs.existsSync(postsDirectory)) {
+    return []; // Return empty array if directory doesn't exist
+  }
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames
     .filter((name) => name.endsWith(".mdx"))
