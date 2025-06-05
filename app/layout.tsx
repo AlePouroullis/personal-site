@@ -14,32 +14,34 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alé Pouroullis - Product Engineer",
+  title: "ale@london:~$ whoami",
   description:
-    "Product Engineer at Humanloop building LLM evaluation tools. Previously architected systems scaling to $1.2M ARR with expertise in full-stack development and systems programming.",
+    "Product Engineer @ Humanloop | Building tools that help enterprises integrate AI into their applications. Based in London, originally from Cape Town.",
   keywords: [
     "Product Engineer",
     "Software Engineer",
-    "Full Stack",
+    "AI",
+    "LLM",
     "London",
     "Humanloop",
+    "Cape Town",
   ],
   authors: [{ name: "Alé Pouroullis" }],
   creator: "Alé Pouroullis",
   openGraph: {
-    title: "Alé Pouroullis - Product Engineer",
+    title: "ale@london:~$ whoami",
     description:
-      "Product Engineer at Humanloop building LLM evaluation tools in London.",
+      "Product Engineer @ Humanloop | Building AI tools in London | Running, handstands, and guitar in between commits",
     url: "https://alepouroullis.com",
-    siteName: "Alé Pouroullis",
+    siteName: "ale@london",
     locale: "en_GB",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Alé Pouroullis - Product Engineer",
+    title: "ale@london:~$ whoami",
     description:
-      "Product Engineer at Humanloop building LLM evaluation tools in London.",
+      "Product Engineer @ Humanloop | Building AI tools in London | Running, handstands, and guitar in between commits",
   },
   robots: {
     index: true,
