@@ -16,18 +16,18 @@ export default function BlogPage() {
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-500">
       <div className="max-w-3xl mx-auto px-8 py-16">
         {/* Header */}
-        <header className="mb-16">
+        <header className="mb-10">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors mb-8 font-mono"
           >
             <ArrowLeft size={16} />
-            Back to home
+            ale@london:~/writing$ cd ../
           </Link>
 
           <h1 className="text-2xl font-medium mb-2">Writing</h1>
           <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-            Some ramblings, as an outlet for my thoughts.
+            An outlet for my ramblings, so I can feel important
           </p>
         </header>
 
@@ -53,9 +53,7 @@ export default function BlogPage() {
                   )}
 
                   <div className="flex items-center gap-4 text-xs text-zinc-500">
-                    <time dateTime={post.date}>
-                      {formatDate(post.date)}
-                    </time>
+                    <time dateTime={post.date}>{formatDate(post.date)}</time>
                     {post.readingTime && (
                       <div className="flex items-center gap-1">
                         <Clock size={12} />

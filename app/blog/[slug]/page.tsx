@@ -2,13 +2,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
-import { formatDate, formatDateLong } from "@/lib/date";
+import { formatDateLong } from "@/lib/date";
 import { ArrowLeft, Clock } from "lucide-react";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
+// Then update your functions to handle the Promise:
 export async function generateStaticParams() {
   const posts = getAllPosts();
   return posts.map((post) => ({
@@ -17,7 +19,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const post = getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
 
   if (!post) {
     return {
@@ -34,7 +37,7 @@ export async function generateMetadata({ params }: Props) {
 interface MDXComponentProps {
   children?: React.ReactNode;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 const mdxComponents = {
@@ -100,8 +103,10 @@ const mdxComponents = {
   ),
 };
 
-export default function BlogPost({ params }: Props) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPost({ params }: Props) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  const showBottomNav = post?.readingTime && post.readingTime > 3;
 
   if (!post) {
     notFound();
@@ -114,10 +119,10 @@ export default function BlogPost({ params }: Props) {
         <header className="mb-12">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors mb-8 font-mono"
           >
             <ArrowLeft size={16} />
-            Back to writing
+            ale@london:~/writing/post$ cd ../
           </Link>
 
           <h1 className="text-2xl font-medium mb-4 leading-tight">
@@ -143,14 +148,17 @@ export default function BlogPost({ params }: Props) {
         </article>
 
         {/* Footer */}
-        <footer className="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800">
-          <Link
-            href="/blog"
-            className="text-sm text-zinc-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
-          >
-            ← Back to all posts
-          </Link>
-        </footer>
+        {showBottomNav && (
+          <footer className="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-amber-600 dark:hover:text-amber-400 transition-colors mb-8 font-mono"
+            >
+              <ArrowLeft size={16} />
+              ale@london:~/writing/post$ cd ../
+            </Link>
+          </footer>
+        )}
       </div>
     </div>
   );

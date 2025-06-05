@@ -1,15 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { Post } from "@/lib/blog";
-import { formatDate } from "@/lib/date";
+import { useState } from "react";
 
-interface TerminalProps {
-  recentPosts: Post[];
-}
-
-const Terminal = ({ recentPosts }: TerminalProps) => {
+const Terminal = () => {
   const [techMode, setTechMode] = useState(true);
 
   return (
@@ -33,11 +26,16 @@ const Terminal = ({ recentPosts }: TerminalProps) => {
         className="text-amber-400 leading-none my-3"
         style={{ fontFamily: "monospace", whiteSpace: "pre" }}
       >
-        {`  █████╗ ██╗     ███████╗    ██████╗`}<br />
-        {` ██╔══██╗██║     ██╔════╝    ██╔══██╗`}<br />
-        {` ███████║██║     █████╗      ██████╔╝`}<br />
-        {` ██╔══██║██║     ██╔══╝      ██╔═══╝ `}<br />
-        {` ██║  ██║███████╗███████╗    ██║     `}<br />
+        {`  █████╗ ██╗     ███████╗    ██████╗`}
+        <br />
+        {` ██╔══██╗██║     ██╔════╝    ██╔══██╗`}
+        <br />
+        {` ███████║██║     █████╗      ██████╔╝`}
+        <br />
+        {` ██╔══██║██║     ██╔══╝      ██╔═══╝ `}
+        <br />
+        {` ██║  ██║███████╗███████╗    ██║     `}
+        <br />
         {` ╚═╝  ╚═╝╚══════╝╚══════╝    ╚═╝     `}
       </div>
       <div className="text-zinc-500">Product Engineer</div>
@@ -155,9 +153,7 @@ const Terminal = ({ recentPosts }: TerminalProps) => {
               moved to London in early 2025 to explore the tech scene here.
             </p>
             <p>
-              When I&apos;m not coding, I enjoy running through London&apos;s
-              parks, practicing handstands, and slowly getting back into music
-              production and guitar playing.
+              When I&apos;m not working, I enjoy running, practicing handstands, and slowly getting back into guitar.
             </p>
           </div>
 
